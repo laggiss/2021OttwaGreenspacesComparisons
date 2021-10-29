@@ -3,11 +3,14 @@ import keras
 import keras.models
 from Model_comparisons import *
 from keras import Model
-#Liam training and validation datasets
+
+#Liam training and validation datasets,
+# TODO: need to check if these contain same data as Jad's tfrecords. If not then use Jad's TFrecords
+# TODO: So jad may not have used TFrecords at all.  May have to redo from scratch.
 dataset_val = tf.data.TFRecordDataset('D:/Comparison_1/data_val.tfrecord')
 dataset_train = tf.data.TFRecordDataset('D:/Comparison_1/data_train.tfrecord')
 
-batch_size = 6
+batch_size = 32
 
 dataset_train = dataset_train.map(map_fn)
 dataset_train = dataset_train.shuffle(2048, reshuffle_each_iteration=True)
@@ -40,10 +43,10 @@ history_rank = rank_model.fit(dataset_train, validation_data = dataset_val, epoc
 
 import matplotlib.pyplot as plt
 
-plt.plot(history.history['val_accuracy'])
-plt.plot(history.history['accuracy'])
-plt.plot(history.history['val_loss'])
-plt.plot(history.history['loss'])
+plt.plot(history_rank.history['val_accuracy'])
+plt.plot(history_rank.history['accuracy'])
+plt.plot(history_rank.history['val_loss'])
+plt.plot(history_rank.history['loss'])
 
 import h5py
 def print_attrs(name, obj):
