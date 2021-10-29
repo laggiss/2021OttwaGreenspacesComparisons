@@ -7,14 +7,14 @@ Script used to define the comparisons model and trained it.
 # ----------------------------------------------------------------------------------------------------------------------
 import os
 import numpy as np
+import tensorflow
+from tensorflow.keras import Input, Model, Sequential
+from tensorflow.keras.applications import VGG19, ResNet152V2, ResNet50V2, VGG16, Xception
+from tensorflow.keras.layers import concatenate, Conv2D, Dropout, Flatten, Dense, BatchNormalization, AveragePooling2D, Reshape, Activation, Subtract, Concatenate
+from tensorflow.keras.optimizers import SGD, Adam
 
-from keras import Input, Model, Sequential
-from keras.applications import VGG19, ResNet152V2, ResNet50V2, VGG16, Xception
-from keras.layers import concatenate, Conv2D, Dropout, Flatten, Dense, BatchNormalization, AveragePooling2D, Reshape, Activation, Subtract, Concatenate
-from keras.optimizers import SGD, Adam
 
-
-from keras.layers.experimental.preprocessing import RandomTranslation, RandomFlip, RandomRotation, RandomZoom, RandomHeight, RandomWidth,Rescaling 
+from tensorflow.keras.layers.experimental.preprocessing import RandomTranslation, RandomFlip, RandomRotation, RandomZoom, RandomHeight, RandomWidth,Rescaling
 
 from keras.applications.imagenet_utils import preprocess_input
 
